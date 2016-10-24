@@ -1,0 +1,45 @@
+!!!
+%html{lang: I18n.locale}
+  %head
+    %title= content_for?(:title) ? "#{yield(:title)} - Glass" : 'Glass'
+    %meta(http-equiv="content-type" content="text/html" charset="utf-8")
+    %meta(http-equiv="x-ua-compatible" content="ie=edge,chrome=1")
+    %meta(name="description" content="Glass")
+    %meta(name="author" content="Glass")
+    %link(rel="shortcut icon" href="/images/favicon.png")
+
+    = stylesheet_link_tag 'application', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css',
+                          media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    = yield :head
+  %body
+    = render 'layouts/partials/warnings'
+    .container-narrow
+      .masthead
+        %ul.nav.nav-pills.pull-right
+          - if user_signed_in?
+            %li
+              = link_to destroy_user_session_path, method: :delete do
+                %i.fa.fa-sign-out
+                = t('navbar.sign_out')
+            %li
+              = link_to user_profile_path(current_user) do
+                %i.fa.fa-user
+                = t('navbar.profile')
+          - else
+            %li
+              = link_to new_user_session_path do
+                %i.fa.fa-pencil-square-o{"aria-hidden" => "true"}
+                = t('navbar.signin')
+            %li
+              = link_to new_user_registration_path do
+                %i.fa.fa-user{"aria-hidden" => "true"}
+                = t('navbar.signup')
+        %h3.muted= link_to "Glass", root_path
+      %hr/
+      = render partial: 'layouts/partials/messages'
+      = yield
+      %hr/
+      .footer
+        %p Glass Copyright &copy; #{Time.zone.now.year} Tüm Hakları Saklıdır.

@@ -1,0 +1,23 @@
+development: &default
+  adapter: postgresql
+  database: glass_development
+  encoding: utf8
+  min_messages: warning
+  pool: 5
+  timeout: 5000
+  host: localhost
+  port: 5432
+  username: hmt
+  password: hmt
+
+test:
+  <<: *default
+  database: glass_test
+
+production:
+  <<: *default
+  database: glass_production 
+
+staging:
+  <<: *default
+  database: glass_staging   
