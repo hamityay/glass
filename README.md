@@ -1,3 +1,4 @@
+
 # Glass
 
 # TODOs
@@ -21,4 +22,6 @@ rake dev:seed
 rails s
 ```
 
+# glass
+This is an term project for glass companies to handle orders and stocks...
 
