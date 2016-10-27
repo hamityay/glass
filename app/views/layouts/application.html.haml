@@ -34,7 +34,7 @@
                 = t('navbar.sign_out')
             %li
               = link_to customer_profile_path(current_customer) do
-                %i.fa.fa-user
+                %i.fa.fa-building
                 = t('navbar.profile')
           - else
             %li
@@ -49,12 +49,12 @@
                 = t('navbar.signup')
             %li
               = link_to new_customer_session_path do
-                %i.fa.fa-pencil-square-o{"aria-hidden" => "true"}
+                %i.fa.fa-building-o{"aria-hidden" => "true"}
                 Müşteri
                 = t('navbar.signin')
             %li
               = link_to new_customer_registration_path do
-                %i.fa.fa-user{"aria-hidden" => "true"}
+                %i.fa.fa-building{"aria-hidden" => "true"}
                 Müşteri
                 = t('navbar.signup')
 
