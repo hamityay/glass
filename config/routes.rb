@@ -40,6 +40,18 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:index]
     resources :profile, only: [:show, :edit, :update]
   end
+  #Customers
+  devise_for :customers, controllers: {sessions: 'customer/sessions', registrations: 'customer/registrations', passwords: 'customer/passwords' }, path: 'customer',
+             path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret',  confirmation: 'verification' }
+  as :customer do
+    get 'customer/edit' => 'customer/registrations#edit', as: 'edit_customer_profile_registration'
+    put 'customer' => 'customer/registrations#update', as: 'customer_profile_registration'
+  end
+  namespace :customer do
+    root to: 'dashboard#index'
+    resources :dashboard, only: [:index]
+    resources :profile, only: [:show, :edit, :update]
+  end
 
   # Common pages
   root to: 'welcome#index'
