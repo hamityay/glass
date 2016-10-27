@@ -3,6 +3,6 @@
     .row
       .col-lg-12
         .alert.alert-info
-          = t('view.hello', customer: current_customer.email)
+          = t('view.hello', user: current_customer.email)
         = link_to t('navbar.sign_out'), destroy_customer_session_path, method: :delete, class: 'btn btn-danger'
         = link_to t('navbar.edit_login_info'), edit_customer_registration_path, class: 'btn btn-primary'

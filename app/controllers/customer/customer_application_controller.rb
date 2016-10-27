@@ -4,7 +4,7 @@ class Customer::CustomerApplicationController < ActionController::Base
 
   # layout 'user/application'
   layout 'application'
-  before_filter :set_audit_customer
+  #before_filter :set_audit_customer
   before_action :authenticate_customer!
 
   self.responder = ApplicationResponder
