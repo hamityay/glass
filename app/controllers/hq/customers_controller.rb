@@ -21,7 +21,7 @@ class Hq::CustomersController < Hq::ApplicationController
   end
 
   def edit
-    add_breadcrumb @customer.name, hq_customer_path(@customerr)
+    add_breadcrumb @customer.name, hq_customer_path(@customer)
     add_breadcrumb t('tooltips.edit'), edit_hq_customer_path
   end
 
@@ -59,6 +59,6 @@ class Hq::CustomersController < Hq::ApplicationController
   end
 
   def customer_params
-    params.require(:customer).permit(:email, :name, :surname, :address, :phone, :officer)
+    params.require(:customer).permit(:email, :name, :surname, :address, :phone, :officer, :user_id)
   end
 end

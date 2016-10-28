@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   # Virtual attributes
   attr_accessor :is_generated_password
 
+  # associations
+  has_many :customers
+
   # Scopes
   scope :active, -> { where(is_active: true) }
 

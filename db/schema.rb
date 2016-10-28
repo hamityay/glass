@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161028114540) do
+ActiveRecord::Schema.define(version: 20161028144755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 20161028114540) do
     t.string   "officer"
     t.integer  "total"
     t.boolean  "is_active",              default: false
+    t.integer  "user_id"
   end
 
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true, using: :btree
@@ -125,4 +126,5 @@ ActiveRecord::Schema.define(version: 20161028114540) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "cities", "countries"
+  add_foreign_key "customers", "users"
 end

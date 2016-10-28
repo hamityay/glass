@@ -13,6 +13,11 @@
       = s.attribute :phone
       = s.attribute :officer
       = s.attribute :total
+      = if @customer.user_id
+        %strong
+          Müşteri Temsilcisi
+        %br
+          = @customer.user.name
       = s.attribute :email do
         = mail_to @customer.email, @customer.email
       = s.attribute :is_active

@@ -12,6 +12,7 @@
         = f.input :email
         = f.input :phone
         = f.input :officer
+        = f.association :user, :as => :collection_select
 
       .form-actions
         - text = @customer.id.present? ? t('btn.update') : t('btn.add')

@@ -2,6 +2,9 @@ class Customer < ActiveRecord::Base
   # Virtual attributes
   attr_accessor :is_generated_password
 
+  # associations
+  belongs_to :user#, dependent: :nullify
+
   # Scopes
   scope :active, -> { where(is_active: true) }
 
