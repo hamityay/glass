@@ -1,0 +1,17 @@
+.panel-body.filters
+  = render 'filters'
+%table.table
+  %thead
+    %tr
+      %th= sort_link(@search, :id, t('activerecord.attributes.customer.id'))
+      %th= sort_link(@search, :name, t('activerecord.attributes.customer.name'))
+      %th= sort_link(@search, :email, t('activerecord.attributes.customer.email'))
+      %th= sort_link(@search, :phone, t('activerecord.attributes.customer.phone'))
+      %th= sort_link(@search, :officer, t('activerecord.attributes.customer.officer'))
+      %th= sort_link(@search, :current_sign_in_at, t('activerecord.attributes.customer.current_sign_in_at'))
+      %th= sort_link(@search, :last_sign_in_at, t('activerecord.attributes.customer.last_sign_in_at'))
+      %th= sort_link(@search, :is_active, t('activerecord.attributes.customer.is_active'))
+      %th.actions
+        = t('view.actions')
+  %tbody.customers
+    = render @customers

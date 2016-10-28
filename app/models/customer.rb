@@ -2,6 +2,9 @@ class Customer < ActiveRecord::Base
   # Virtual attributes
   attr_accessor :is_generated_password
 
+  # Scopes
+  scope :active, -> { where(is_active: true) }
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
@@ -28,7 +31,7 @@ class Customer < ActiveRecord::Base
   end
 
   def active_for_authentication?
-    super# && self.is_active
+    super && self.is_active
   end
 
   def full_name

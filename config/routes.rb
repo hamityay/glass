@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:index]
     resources :admins, concerns: [:activeable]
     resources :users, concerns: [:activeable]
+    resources :customers, concerns: [:activeable]
     resources :countries
     resources :cities
     resources :audits, only: [:index, :show]

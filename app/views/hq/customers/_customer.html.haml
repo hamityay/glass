@@ -1,0 +1,22 @@
+%tr{class: customer.is_active ? 'active' : 'passive'}
+  %td= customer.id
+  %td= customer.full_name
+  %td= mail_to customer.email, customer.email
+  %td= customer.phone
+  %td= customer.officer
+  %td=l customer.current_sign_in_at if customer.current_sign_in_at.present?
+  %td=l customer.last_sign_in_at if customer.last_sign_in_at.present?
+  %td= customer.is_active ? t('view.active') : t('view.passive')
+  %td.action
+    = link_to([:hq, customer], class: 'btn btn-success', data: { toggle: :tooltip}, title: t('tooltips.zoom')) do
+      %i.icon-zoom-in
+    = link_to(edit_hq_customer_path(customer) , class: 'btn btn-info', data: { toggle: :tooltip }, title: t('tooltips.edit')) do
+      %i.icon-edit
+    = link_to([:hq, customer], class: 'btn btn-danger', method: :delete, data: { confirm: t('tooltips.are_you_sure'), toggle: :tooltip }, title: t('tooltips.delete')) do
+      %i.icon-trash
+    - if customer.is_active
+      = link_to(toggle_is_active_hq_customer_path(customer), class: 'btn btn-danger', method: :post, data: { toggle: :tooltip}, title: t('view.make_passive') ) do
+        %i.icon-ban-circle
+    - else
+      = link_to(toggle_is_active_hq_customer_path(customer), class: 'btn btn-info', method: :post, data: { toggle: :tooltip}, title: t('view.make_active')) do
+        %i.icon-check

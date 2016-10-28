@@ -3,7 +3,7 @@
     %i.icon-edit.icon-large
     = yield :form_title
   .panel-body
-    = simple_form_for([:hq, @user]) do |f|
+    = simple_form_for([:hq, @customer]) do |f|
       = f.error_notification
 
       .form-inputs
@@ -11,9 +11,9 @@
         = f.input :surname
         = f.input :email
         = f.input :phone
-        = f.input :time_zone, input_html: { class: 'chosen-select'}, include_blank: t('view.select')
+        = f.input :officer
 
       .form-actions
-        - text = @user.id.present? ? t('btn.update') : t('btn.add')
+        - text = @customer.id.present? ? t('btn.update') : t('btn.add')
         = f.button :submit, text, class: 'btn btn-primary'
-        = link_to t('cancel'), hq_users_path, class: 'btn'
+        = link_to t('cancel'), hq_customers_path, class: 'btn'
