@@ -1,20 +1,26 @@
 - content_for :toolbar do
-  = link_to edit_hq_user_path(@user ), class: 'btn btn-default' do
+  = link_to edit_hq_customer_path(@customer ), class: 'btn btn-default' do
     %i.icon-pencil
     = t('action_button.edit')
 .panel.panel-default
   .panel-heading
     %i.icon-edit.icon-large
-    = t('tt.show', resource_name: User.model_name.human)
+    = t('tt.show', resource_name: Customer.model_name.human)
   .panel-body
-    = show_for @user do |s|
+    = show_for @customer do |s|
       = s.attribute :name
       = s.attribute :surname
       = s.attribute :phone
+      = s.attribute :officer
+      = s.attribute :total
+      = if @customer.user_id
+        %strong
+          Müşteri Temsilcisi
+        %br
+          = @customer.user.name
       = s.attribute :email do
-        = mail_to @user.email, @user.email
+        = mail_to @customer.email, @customer.email
       = s.attribute :is_active
-      = s.attribute :time_zone
       = s.attribute :current_sign_in_at
       = s.attribute :last_sign_in_at
       = s.attribute :created_at

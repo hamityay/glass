@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:index]
     resources :admins, concerns: [:activeable]
     resources :users, concerns: [:activeable]
+    resources :customers, concerns: [:activeable]
     resources :countries
     resources :cities
     resources :audits, only: [:index, :show]
@@ -36,6 +37,18 @@ Rails.application.routes.draw do
     put 'user' => 'user/registrations#update', as: 'user_profile_registration'
   end
   namespace :user do
+    root to: 'dashboard#index'
+    resources :dashboard, only: [:index]
+    resources :profile, only: [:show, :edit, :update]
+  end
+  #Customers
+  devise_for :customers, controllers: {sessions: 'customer/sessions', registrations: 'customer/registrations', passwords: 'customer/passwords' }, path: 'customer',
+             path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret',  confirmation: 'verification' }
+  as :customer do
+    get 'customer/edit' => 'customer/registrations#edit', as: 'edit_customer_profile_registration'
+    put 'customer' => 'customer/registrations#update', as: 'customer_profile_registration'
+  end
+  namespace :customer do
     root to: 'dashboard#index'
     resources :dashboard, only: [:index]
     resources :profile, only: [:show, :edit, :update]

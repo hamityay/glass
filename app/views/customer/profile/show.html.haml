@@ -3,14 +3,16 @@
     %i.icon-edit.icon-large
     = t('tt.show', resource_name: "Profile")
     .nav.nav-pills.pull-right
-      = link_to edit_user_profile_path do
-        %i.fa.fa-user
+      = link_to edit_customer_profile_path do
+        %i.fa.fa-building
         = t('navbar.düzenle')
   .panel-body
     = show_for @profile do |s|
       = s.attribute :name
       = s.attribute :surname
       = s.attribute :email
+      = s.attribute :address
       = s.attribute :phone
+      = s.attribute :officer
       = s.attribute :created_at
       = s.attribute :updated_at

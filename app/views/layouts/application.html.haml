@@ -27,15 +27,37 @@
               = link_to user_profile_path(current_user) do
                 %i.fa.fa-user
                 = t('navbar.profile')
+          - elsif customer_signed_in?
+            %li
+              = link_to destroy_customer_session_path, method: :delete do
+                %i.fa.fa-sign-out
+                = t('navbar.sign_out')
+            %li
+              = link_to customer_profile_path(current_customer) do
+                %i.fa.fa-building
+                = t('navbar.profile')
           - else
             %li
               = link_to new_user_session_path do
                 %i.fa.fa-pencil-square-o{"aria-hidden" => "true"}
+                Kullanıcı
                 = t('navbar.signin')
             %li
               = link_to new_user_registration_path do
                 %i.fa.fa-user{"aria-hidden" => "true"}
+                Kullanıcı
                 = t('navbar.signup')
+            %li
+              = link_to new_customer_session_path do
+                %i.fa.fa-building-o{"aria-hidden" => "true"}
+                Müşteri
+                = t('navbar.signin')
+            %li
+              = link_to new_customer_registration_path do
+                %i.fa.fa-building{"aria-hidden" => "true"}
+                Müşteri
+                = t('navbar.signup')
+
         %h3.muted= link_to "Glass", root_path
       %hr/
       = render partial: 'layouts/partials/messages'

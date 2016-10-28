@@ -1,9 +1,9 @@
-class User < ActiveRecord::Base
+class Customer < ActiveRecord::Base
   # Virtual attributes
   attr_accessor :is_generated_password
 
   # associations
-  has_many :customers
+  belongs_to :user#, dependent: :nullify
 
   # Scopes
   scope :active, -> { where(is_active: true) }
@@ -53,6 +53,7 @@ class User < ActiveRecord::Base
   end
 
   def send_login_info
-    UserMailer.login_info(self.id, self.password).deliver_later! if self.is_generated_password
+    CustomerMailer.login_info(self.id, self.password).deliver_later! if self.is_generated_password
   end
 end
+
