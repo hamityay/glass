@@ -36,6 +36,9 @@ tr:
     edit_login_info: Giriş bilgilerini güncelle
     home_page: Anasayfa
     admin_portal: Yönetici Portalı
+    profile: Profil
+    orders: Siparişlerim
+    neworder: Yeni Sipariş
   tooltips:
     delete: Sil
     are_you_sure: Devam etmek istedğinize emin misiniz?

@@ -1,0 +1,17 @@
+.panel-heading
+  %i.icon-edit.icon-large
+  = yield :form_title
+  .panel-body
+    = simple_form_for([:customer, @order]) do |f|
+      = f.error_notification
+
+      .form-inputs
+        = f.input :width
+        = f.input :height
+        = f.input :count
+        = f.input :deadline
+        = f.input :info
+
+      .form-actions
+        = f.button :submit, class: 'btn btn-primary'
+        = link_to t('cancel'), customer_orders_path, class: 'btn'

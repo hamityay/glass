@@ -33,6 +33,14 @@
                 %i.fa.fa-sign-out
                 = t('navbar.sign_out')
             %li
+              = link_to customer_orders_path do
+                %i.fa.fa-shopping-cart
+                = t('navbar.orders')
+            %li
+              = link_to new_customer_order_path do
+                %i.fa.fa-cart-plus
+                = t('navbar.neworder')
+            %li
               = link_to customer_profile_path(current_customer) do
                 %i.fa.fa-building
                 = t('navbar.profile')

@@ -1,0 +1,13 @@
+%tr
+  %td= order.width
+  %td= order.height
+  %td= order.count
+  %td= order.quantity
+  %td= order.date
+  %td= order.deadline
+  %td= order.state
+  %td= order.info
+  %td.actions
+    - if order.state == 'Siparişiniz alındı'
+      = link_to([:customer, order], class: 'btn btn-danger', method: :delete, data: { confirm: t('tooltips.are_you_sure'), toggle: :tooltip }, title: t('tooltips.delete')) do
+        %i.icon-trash

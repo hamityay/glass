@@ -69,6 +69,19 @@ tr:
         total: Bakiye
         created_at: Oluşturulma tarihi
         updated_at: Güncellenme tarihi
+      order:
+        id: Id
+        width: En
+        height: Boy
+        count: Adet
+        quantity: Metrekare
+        date: Spariş Tarihi
+        deadline: Teslim Tarihi
+        state: Durum
+        amount: Tutar
+        info: Sipariş Bilgisi
+        created_at: Oluşturulma tarihi
+        updated_at: Güncellenme tarihi
       admin:
         id: ID
         email: E-posta
