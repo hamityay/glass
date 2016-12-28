@@ -39,6 +39,7 @@ tr:
     profile: Profil
     orders: Siparişlerim
     neworder: Yeni Sipariş
+    newproduct: Yeni Ürün
   tooltips:
     delete: Sil
     are_you_sure: Devam etmek istedğinize emin misiniz?

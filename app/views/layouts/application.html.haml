@@ -24,6 +24,10 @@
                 %i.fa.fa-sign-out
                 = t('navbar.sign_out')
             %li
+              = link_to new_product_path do
+                %i.fa.fa-glass
+                = t('navbar.newproduct')
+            %li
               = link_to user_profile_path(current_user) do
                 %i.fa.fa-user
                 = t('navbar.profile')

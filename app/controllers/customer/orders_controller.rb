@@ -1,5 +1,6 @@
 class Customer::OrdersController < Customer::CustomerApplicationController
-  before_action :set_order, only: [:edit, :update, :destroy, :toggle_is_active]
+  before_action :authenticate_customer!, only: [:index, :new, :create]
+  before_action :set_order, only: [:edit, :update, :destroy]
   add_breadcrumb I18n.t('dock.dashboard'), :customer_orders_path
 
   def index
@@ -37,6 +38,7 @@ class Customer::OrdersController < Customer::CustomerApplicationController
 
   def destroy
     @order.destroy
+    flash[:success] = 'Sipariş başarılı bir şekilde silindi'
     redirect_to customer_orders_path
   end
 
