@@ -4,6 +4,7 @@ class User::ProfileController < User::UserApplicationController
   add_breadcrumb I18n.t('dock.profile'), :user_profile_path
 
   def show
+    @customers = current_user.customers
     add_breadcrumb @profile.full_name, user_profile_path
     respond_with([:user, @profile])
   end
@@ -29,7 +30,8 @@ class User::ProfileController < User::UserApplicationController
         :name,
         :surname,
         :time_zone,
-        :phone
+        :phone,
+        :user_id
     )
   end
 end

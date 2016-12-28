@@ -5,7 +5,7 @@
     .nav.nav-pills.pull-right
       = link_to edit_user_profile_path do
         %i.fa.fa-user
-        = t('navbar.düzenle')
+        = t('actions.edit')
   .panel-body
     = show_for @profile do |s|
       = s.attribute :name
@@ -14,3 +14,12 @@
       = s.attribute :phone
       = s.attribute :created_at
       = s.attribute :updated_at
+
+  .panel-heading
+    %i.icon-edit.icon-large
+    #strong Müşteriler
+  .panel-body
+    - @customers.each do |customer|
+      = customer.name
+      = customer.total
+      #hr

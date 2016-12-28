@@ -5,6 +5,7 @@ tr:
     create: Oluşturma
     destroy: Silme
     delete: Silme
+    edit: Düzenle
   btn:
     back: Geri
     update: Güncelle
