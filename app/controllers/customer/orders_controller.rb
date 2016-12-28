@@ -1,4 +1,5 @@
 class Customer::OrdersController < Customer::CustomerApplicationController
+  include ActionView::Helpers::NumberHelper
   before_action :authenticate_customer!, only: [:index, :new, :create]
   before_action :set_order, only: [:edit, :update, :destroy]
   add_breadcrumb I18n.t('dock.dashboard'), :customer_orders_path
@@ -17,9 +18,10 @@ class Customer::OrdersController < Customer::CustomerApplicationController
     @customer = current_customer
     @order = @customer.orders.new
     if @order.update(order_params)
-      @order.quantity = ( @order.width * @order.height * @order.count ) / 1000000.0
+      @order.quantity = ((@order.width * @order.height * @order.count ) / 1000000.0).round(2)
       @order.date = Date.today
       @order.state = 'Siparişiniz alındı'
+      @order.amount = ( @order.quantity * @order.products.first.price * 1.18 ).round(2)
       @order.save
       flash[:success] = 'Sipariş başarılı bir şekilde kaydedilmiştir'
       redirect_to new_customer_order_path
@@ -48,6 +50,6 @@ class Customer::OrdersController < Customer::CustomerApplicationController
     end
 
     def order_params
-      params.require(:order).permit(:width, :height, :count, :deadline, :info)
+      params.require(:order).permit(:width, :height, :count, :deadline, :info, :product_ids)
     end
 end

@@ -38,8 +38,8 @@ tr:
     admin_portal: Yönetici Portalı
     profile: Profil
     orders: Siparişlerim
-    neworder: Yeni Sipariş
-    newproduct: Yeni Ürün
+    neworder: Sipariş Ver
+    newproduct: Ürün Ekle
   tooltips:
     delete: Sil
     are_you_sure: Devam etmek istedğinize emin misiniz?

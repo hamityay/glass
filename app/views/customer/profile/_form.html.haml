@@ -10,6 +10,7 @@
         = f.input :name
         = f.input :surname
         = f.input :email
+        = f.input :user_id, :collection => User.all.collect {|c| [c.name, c.id]}
         = f.input :address
         = f.input :phone
         = f.input :officer

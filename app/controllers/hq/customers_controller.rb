@@ -47,7 +47,7 @@ class Hq::CustomersController < Hq::ApplicationController
         flash[:info] = t('flash.actions.toggle_is_active.active', resource_name: Customer.model_name.human) :
         flash[:info] = t('flash.actions.toggle_is_active.passive', resource_name: Customer.model_name.human)
     else
-      flash[:danger] = t('flash.messages.error_occurred')
+      flash[:notice] = t('flash.messages.error_occurred')
     end
     respond_with(:hq, @customer, location: request.referer)
   end

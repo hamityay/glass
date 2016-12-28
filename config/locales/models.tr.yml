@@ -69,6 +69,7 @@ tr:
         total: Bakiye
         created_at: Oluşturulma tarihi
         updated_at: Güncellenme tarihi
+        user_id: Müşteri Temsilcisi
       order:
         id: Id
         width: En
@@ -82,6 +83,8 @@ tr:
         info: Sipariş Bilgisi
         created_at: Oluşturulma tarihi
         updated_at: Güncellenme tarihi
+        product_ids: Ürün Çeşidi
+        amount: Tutar(TL)
       admin:
         id: ID
         email: E-posta
