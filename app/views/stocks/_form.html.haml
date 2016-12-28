@@ -1,0 +1,16 @@
+.panel-heading
+  %i.icon-edit.icon-large
+  = yield :form_title
+  .panel-body
+    = simple_form_for(@stock) do |f|
+      = f.error_notification
+
+      .form-inputs
+        = f.input :dimensions
+        = f.input :count
+        = f.input :product_id, :collection => Product.all.collect {|p| [p.name, p.id]}
+        = f.input :suplier_id, :collection => Suplier.all.collect {|s| [s.name, s.id]}
+
+      .form-actions
+        = f.button :submit, class: 'btn btn-primary'
+        = link_to t('cancel'), stocks_path, class: 'btn'

@@ -42,6 +42,7 @@ tr:
     neworder: Sipariş Ver
     newproduct: Ürün Ekle
     supliers: Tedarikçiler
+    stocks: Stok Bilgisi
   tooltips:
     delete: Sil
     are_you_sure: Devam etmek istedğinize emin misiniz?

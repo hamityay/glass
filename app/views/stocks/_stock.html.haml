@@ -1,0 +1,10 @@
+%tr
+  %td= stock.dimensions
+  %td= stock.count
+  %td= stock.product.name
+  %td= stock.suplier.name
+  %td.actions
+    = link_to(edit_stock_path(stock) , class: 'btn btn-info', data: { toggle: :tooltip }, title: t('tooltips.edit')) do
+      %i.icon-edit
+    = link_to([stock], class: 'btn btn-danger', method: :delete, data: { confirm: t('tooltips.are_you_sure'), toggle: :tooltip }, title: t('tooltips.delete')) do
+      %i.icon-trash

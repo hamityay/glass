@@ -24,12 +24,16 @@
                 %i.fa.fa-sign-out
                 = t('navbar.sign_out')
             %li
+              = link_to stocks_path do
+                %i.fa.fa-sort-amount-asc
+                = t('navbar.stocks')
+            %li
               = link_to new_product_path do
-                %i.fa.fa-glass
+                %i.fa.fa-plus-square
                 = t('navbar.newproduct')
             %li
               = link_to supliers_path do
-                %i.fa.fa-indent
+                %i.fa.fa-briefcase
                 = t('navbar.supliers')
             %li
               = link_to user_profile_path(current_user) do

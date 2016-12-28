@@ -1,0 +1,16 @@
+
+%table.table
+  %thead
+    %tr
+      %th= sort_link(@search, :dimensions, t('activerecord.attributes.stock.dimensions'))
+      %th= sort_link(@search, :count, t('activerecord.attributes.stock.count'))
+      %th= sort_link(@search, :product_id, t('activerecord.attributes.stock.product_id'))
+      %th= sort_link(@search, :suplier_id, t('activerecord.attributes.stock.suplier_id'))
+      %th.actions
+        = t('view.actions')
+  %tbody.orders
+    = render @stocks
+
+= link_to new_stock_path, class: 'btn btn-default' do
+  %i.icon-plus
+  = t('action_button.new', resource_name: 'Stok')
