@@ -1,0 +1,15 @@
+
+%table.table
+  %thead
+    %tr
+      %th= sort_link(@search, :name, t('activerecord.attributes.suplier.name'))
+      %th= sort_link(@search, :phone_number, t('activerecord.attributes.suplier.phone_number'))
+      %th= sort_link(@search, :agent_name, t('activerecord.attributes.suplier.agent_name'))
+      %th.actions
+        = t('view.actions')
+  %tbody.orders
+    = render @supliers
+
+= link_to new_suplier_path, class: 'btn btn-default' do
+  %i.icon-plus
+  = t('action_button.new', resource_name: 'Tedarikçi')

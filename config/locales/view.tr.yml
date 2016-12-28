@@ -41,10 +41,12 @@ tr:
     orders: Siparişlerim
     neworder: Sipariş Ver
     newproduct: Ürün Ekle
+    supliers: Tedarikçiler
   tooltips:
     delete: Sil
     are_you_sure: Devam etmek istedğinize emin misiniz?
     choose: Seç
+    edit: Düzenle
   btn:
     add: Ekle
     update: Güncelle

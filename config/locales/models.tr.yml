@@ -85,6 +85,21 @@ tr:
         updated_at: Güncellenme tarihi
         product_ids: Ürün Çeşidi
         amount: Tutar(TL)
+      product:
+        id: Id
+        name: Ürün İsmi
+        Price: Ürün Fiyatı(TL)
+        category_id: Ürün Kategorisi
+      suplier:
+        id: Id
+        name: Tedarikçi İsmi
+        phone_number: Tedarikçi Telefonu
+        agent_name: Tedarikçi Temsilcisi
+      stock:
+        id: Id
+        dimensions: Cam Plaka Ölçüleri
+        product_id: Ürün İsmi
+        suplier_id: Tedarikçi Adı
       admin:
         id: ID
         email: E-posta

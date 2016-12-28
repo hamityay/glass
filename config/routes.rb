@@ -58,6 +58,9 @@ Rails.application.routes.draw do
   #products
   resources :products
 
+  #supliers
+  resources :supliers
+
   # Common pages
   root to: 'welcome#index'
 

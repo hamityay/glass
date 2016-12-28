@@ -28,6 +28,10 @@
                 %i.fa.fa-glass
                 = t('navbar.newproduct')
             %li
+              = link_to supliers_path do
+                %i.fa.fa-indent
+                = t('navbar.supliers')
+            %li
               = link_to user_profile_path(current_user) do
                 %i.fa.fa-user
                 = t('navbar.profile')
