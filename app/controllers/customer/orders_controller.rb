@@ -23,6 +23,9 @@ class Customer::OrdersController < Customer::CustomerApplicationController
       @order.date = Date.today
       @order.state = 'Siparişiniz ulaştı'
       @order.amount = ( @order.quantity * @order.products.first.price * 1.18 ).round(2)
+      if @order.total == nil
+        @order.total = @order.amount.round
+      end
       @order.save
       flash[:success] = 'Sipariş başarılı bir şekilde kaydedilmiştir'
       redirect_to new_customer_order_path
@@ -69,6 +72,6 @@ class Customer::OrdersController < Customer::CustomerApplicationController
     end
 
     def update_total
-      #@order.customer.total = @order.customer.total + @order.amount
+      @order.customer.total = @order.customer.total + @order.amount unless @order.customer.orders.count == 1
     end
 end
