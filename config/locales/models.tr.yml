@@ -90,6 +90,7 @@ tr:
         name: Ürün İsmi
         Price: Ürün Fiyatı(TL)
         category_id: Ürün Kategorisi
+        image: Resim
       suplier:
         id: Id
         name: Tedarikçi İsmi

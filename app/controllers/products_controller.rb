@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authorize_user!, except: [:index]
+  before_action :authorize_user!, except: [:index, :show]
   before_action :set_product, only: [:edit, :show, :update, :destroy]
   add_breadcrumb I18n.t('dock.dashboard'), :products_path
 
@@ -50,7 +50,7 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:name, :price, :category_id)
+      params.require(:product).permit(:name, :price, :category_id, :image)
     end
 
     def authorize_user!
