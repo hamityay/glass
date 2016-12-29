@@ -1,25 +1,36 @@
-.panel.panel-default
-  .panel-heading
-    %i.icon-edit.icon-large
-    = t('tt.show', resource_name: "Profile")
-    .nav.nav-pills.pull-right
-      = link_to edit_user_profile_path do
-        %i.fa.fa-user
-        = t('actions.edit')
-  .panel-body
-    = show_for @profile do |s|
-      = s.attribute :name
-      = s.attribute :surname
-      = s.attribute :email
-      = s.attribute :phone
-      = s.attribute :created_at
-      = s.attribute :updated_at
-
-  .panel-heading
-    %i.icon-edit.icon-large
-    #strong Müşteriler
-  .panel-body
-    - @customers.each do |customer|
-      = customer.name
-      = customer.total
-      #hr
+.container
+  .col-xs-3
+    .panel.panel-default
+      .panel-heading
+        %i.icon-edit.icon-large
+        = t('tt.show', resource_name: "Profile")
+        .nav.nav-pills.pull-right
+          = link_to edit_user_profile_path do
+            %i.fa.fa-user
+            = t('actions.edit')
+      .panel-body
+        = show_for @profile do |s|
+          = s.attribute :name
+          = s.attribute :surname
+          = s.attribute :email
+          = s.attribute :phone
+          = s.attribute :created_at
+          = s.attribute :updated_at
+  .col-xs-4
+    .panel.panel-default
+      .panel-heading
+        %i.icon-edit.icon-large
+        #strong Müşteriler
+      .panel-body
+        %table.table
+          %thead
+            %tr
+              %th Müşteri Adı
+              %th Bakiyesi
+              %th Siparişleri
+          %tbody
+            - @customers.each do |customer|
+              %tr
+                %td= customer.name
+                %td= customer.total
+                %td= link_to 'Siparişler', user_orders_path(customer)

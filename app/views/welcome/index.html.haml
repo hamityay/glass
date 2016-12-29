@@ -1,15 +1,14 @@
-.jumbotron
-  %h1 Welcome to Glass
-  - if current_user
-    = link_to t('navbar.sign_out'), destroy_user_session_path, class: 'btn btn-large', method: :delete
-    .row-fluid.marketing
-      %p
-        %strong Name:
-        = current_user.name
-      %p
-        %strong Email:
-        = current_user.email
-    = link_to t('navbar.edit_login_info'), edit_user_registration_path, class: 'btn btn-large'
-  - else
-    = link_to t('navbar.signup'), new_user_registration_path, class: 'btn btn-large btn-success'
-    = link_to t('navbar.signin'), new_user_session_path, class: 'btn btn-large'
+%table.table
+  %thead
+    %tr
+      %th Ürün Resmi
+      %th Ürün Adı
+      %th Fiyatı (TL)
+      %th Kategorisi
+  %tbody
+  - @products.each do |p|
+    %tr
+      %td
+      %td= link_to p.name, product_path(p)
+      %td= p.price
+      %td= p.category.name

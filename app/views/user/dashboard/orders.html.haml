@@ -1,0 +1,34 @@
+
+%table.table
+  %thead
+    %tr
+      %th= sort_link(@search, :width, t('activerecord.attributes.order.width'))
+      %th= sort_link(@search, :height, t('activerecord.attributes.order.height'))
+      %th= sort_link(@search, :count, t('activerecord.attributes.order.count'))
+      %th= sort_link(@search, :product_ids, t('activerecord.attributes.order.product_ids'))
+      %th= sort_link(@search, :quantity, t('activerecord.attributes.order.quantity'))
+      %th= sort_link(@search, :amount, t('activerecord.attributes.order.amount'))
+      %th= sort_link(@search, :date, t('activerecord.attributes.order.date'))
+      %th= sort_link(@search, :deadline, t('activerecord.attributes.order.deadline'))
+      %th= sort_link(@search, :state, t('activerecord.attributes.order.state'))
+      %th= sort_link(@search, :info, t('activerecord.attributes.order.info'))
+      %th.actions
+        = t('view.actions')
+    %tbody
+      - @orders.each do |order|
+        %tr
+          %td= order.width
+          %td= order.height
+          %td= order.count
+          %td= order.products.first.name
+          %td= order.quantity
+          %td= order.amount
+          %td= order.date
+          %td= order.deadline
+          %td= order.state
+          %td= order.info
+          %td.actions
+            = link_to(edit_customer_order_path( order) , class: 'btn btn-info', data: { toggle: :tooltip }, title: t('tooltips.edit')) do
+              %i.icon-edit
+            = link_to([:customer, order], class: 'btn btn-danger', method: :delete, data: { confirm: t('tooltips.are_you_sure'), toggle: :tooltip }, title: t('tooltips.delete')) do
+              %i.icon-trash

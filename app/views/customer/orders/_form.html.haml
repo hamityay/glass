@@ -10,6 +10,8 @@
         = f.input :height
         = f.input :count
         = f.input :product_ids, :collection => Product.all.collect {|c| [c.name, c.id]}
+        - if user_signed_in?
+          = f.input :state
         = f.input :deadline
         = f.input :info
 

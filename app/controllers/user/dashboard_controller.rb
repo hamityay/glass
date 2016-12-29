@@ -5,4 +5,11 @@ class User::DashboardController < User::UserApplicationController
   def index
   end
 
+  def orders
+    @customer = Customer.find(params[:id])
+    @search = @customer.orders.order(id: :desc).search(params[:q])
+    @orders = @search.result(distinct: true).paginate(page: params[:page])
+    #respond_with(@orders)
+  end
+
 end

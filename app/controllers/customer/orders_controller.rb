@@ -2,6 +2,7 @@ class Customer::OrdersController < Customer::CustomerApplicationController
   include ActionView::Helpers::NumberHelper
   before_action :authenticate_customer!, only: [:index, :new, :create]
   before_action :set_order, only: [:edit, :update, :destroy]
+  after_action :update_total, only: [:create, :update]
   add_breadcrumb I18n.t('dock.dashboard'), :customer_orders_path
 
   def index
@@ -20,7 +21,7 @@ class Customer::OrdersController < Customer::CustomerApplicationController
     if @order.update(order_params)
       @order.quantity = ((@order.width * @order.height * @order.count ) / 1000000.0).round(2)
       @order.date = Date.today
-      @order.state = 'Siparişiniz alındı'
+      @order.state = 'Siparişiniz ulaştı'
       @order.amount = ( @order.quantity * @order.products.first.price * 1.18 ).round(2)
       @order.save
       flash[:success] = 'Sipariş başarılı bir şekilde kaydedilmiştir'
@@ -35,13 +36,27 @@ class Customer::OrdersController < Customer::CustomerApplicationController
   end
 
   def update
-
+    if @order.update(order_params)
+      flash[:success] = 'Sipariş başarılı bir şekilde güncellendi'
+      if customer_signed_in?
+        redirect_to customer_orders_path
+      else
+        redirect_to user_orders_path(@order.customer)
+      end
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    customer = @order.customer
     @order.destroy
     flash[:success] = 'Sipariş başarılı bir şekilde silindi'
-    redirect_to customer_orders_path
+    if customer_signed_in?
+      redirect_to customer_orders_path
+    else
+      redirect_to user_orders_path(customer)
+    end
   end
 
   private
@@ -50,6 +65,10 @@ class Customer::OrdersController < Customer::CustomerApplicationController
     end
 
     def order_params
-      params.require(:order).permit(:width, :height, :count, :deadline, :info, :product_ids)
+      params.require(:order).permit(:width, :height, :count, :state, :deadline, :info, :product_ids)
+    end
+
+    def update_total
+      #@order.customer.total = @order.customer.total + @order.amount
     end
 end

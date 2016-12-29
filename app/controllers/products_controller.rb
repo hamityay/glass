@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authorize_user!, except: [:index]
-  before_action :set_product, only: [:edit, :update, :destroy]
+  before_action :set_product, only: [:edit, :show, :update, :destroy]
   add_breadcrumb I18n.t('dock.dashboard'), :products_path
 
   def index
@@ -19,6 +19,10 @@ class ProductsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def show
+
   end
 
   def edit
