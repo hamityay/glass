@@ -69,6 +69,39 @@ tr:
         total: Bakiye
         created_at: Oluşturulma tarihi
         updated_at: Güncellenme tarihi
+        user_id: Müşteri Temsilcisi
+      order:
+        id: Id
+        width: En
+        height: Boy
+        count: Adet
+        quantity: Metrekare
+        date: Spariş Tarihi
+        deadline: Teslim Tarihi
+        state: Durum
+        amount: Tutar
+        info: Sipariş Bilgisi
+        created_at: Oluşturulma tarihi
+        updated_at: Güncellenme tarihi
+        product_ids: Ürün Çeşidi
+        amount: Tutar(TL)
+      product:
+        id: Id
+        name: Ürün İsmi
+        Price: Ürün Fiyatı(TL)
+        category_id: Ürün Kategorisi
+        image: Resim
+      suplier:
+        id: Id
+        name: Tedarikçi İsmi
+        phone_number: Tedarikçi Telefonu
+        agent_name: Tedarikçi Temsilcisi
+      stock:
+        id: Id
+        dimensions: Cam Plaka Ölçüleri
+        count: Adet
+        product_id: Ürün İsmi
+        suplier_id: Tedarikçi Adı
       admin:
         id: ID
         email: E-posta

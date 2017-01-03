@@ -4,6 +4,7 @@ class Customer < ActiveRecord::Base
 
   # associations
   belongs_to :user#, dependent: :nullify
+  has_many :orders
 
   # Scopes
   scope :active, -> { where(is_active: true) }

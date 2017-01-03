@@ -24,6 +24,18 @@
                 %i.fa.fa-sign-out
                 = t('navbar.sign_out')
             %li
+              = link_to stocks_path do
+                %i.fa.fa-sort-amount-asc
+                = t('navbar.stocks')
+            %li
+              = link_to new_product_path do
+                %i.fa.fa-plus-square
+                = t('navbar.newproduct')
+            %li
+              = link_to supliers_path do
+                %i.fa.fa-briefcase
+                = t('navbar.supliers')
+            %li
               = link_to user_profile_path(current_user) do
                 %i.fa.fa-user
                 = t('navbar.profile')
@@ -32,6 +44,14 @@
               = link_to destroy_customer_session_path, method: :delete do
                 %i.fa.fa-sign-out
                 = t('navbar.sign_out')
+            %li
+              = link_to customer_orders_path do
+                %i.fa.fa-shopping-cart
+                = t('navbar.orders')
+            %li
+              = link_to new_customer_order_path do
+                %i.fa.fa-cart-plus
+                = t('navbar.neworder')
             %li
               = link_to customer_profile_path(current_customer) do
                 %i.fa.fa-building

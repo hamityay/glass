@@ -1,0 +1,16 @@
+.panel-heading
+  %i.icon-edit.icon-large
+  = yield :form_title
+  .panel-body
+    = simple_form_for(@product, html: { multipart: true }) do |f|
+      = f.error_notification
+
+      .form-inputs
+        = f.input :image, as: :file
+        = f.input :name
+        = f.input :price
+        = f.input :category_id, :collection => Category.all.collect {|c| [c.name, c.id]}
+
+      .form-actions
+        = f.button :submit, class: 'btn btn-primary'
+        = link_to t('cancel'), root_path, class: 'btn'

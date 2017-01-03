@@ -35,11 +35,13 @@ Rails.application.routes.draw do
   as :user do
     get 'user/edit' => 'user/registrations#edit', as: 'edit_user_profile_registration'
     put 'user' => 'user/registrations#update', as: 'user_profile_registration'
+    get 'user/:id/orders' => 'user/dashboard#orders', as: 'user_orders'
   end
   namespace :user do
     root to: 'dashboard#index'
     resources :dashboard, only: [:index]
     resources :profile, only: [:show, :edit, :update]
+
   end
   #Customers
   devise_for :customers, controllers: {sessions: 'customer/sessions', registrations: 'customer/registrations', passwords: 'customer/passwords' }, path: 'customer',
@@ -52,7 +54,17 @@ Rails.application.routes.draw do
     root to: 'dashboard#index'
     resources :dashboard, only: [:index]
     resources :profile, only: [:show, :edit, :update]
+    resources :orders
   end
+
+  #products
+  resources :products
+
+  #supliers
+  resources :supliers
+
+  #stocks
+  resources :stocks
 
   # Common pages
   root to: 'welcome#index'

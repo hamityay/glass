@@ -1,0 +1,9 @@
+%tr
+  %td= suplier.name
+  %td= suplier.phone_number
+  %td= suplier.agent_name
+  %td.actions
+    = link_to(edit_suplier_path(suplier) , class: 'btn btn-info', data: { toggle: :tooltip }, title: t('tooltips.edit')) do
+      %i.icon-edit
+    = link_to([suplier], class: 'btn btn-danger', method: :delete, data: { confirm: t('tooltips.are_you_sure'), toggle: :tooltip }, title: t('tooltips.delete')) do
+      %i.icon-trash

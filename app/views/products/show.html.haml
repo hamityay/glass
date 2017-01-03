@@ -1,0 +1,17 @@
+.container
+  .col-xs-3
+    = image_tag @product.image.url(:medium)
+
+
+  .col-xs-4
+    #strong
+      = @product.name
+    #br
+      #strong
+        = @product.price
+        TL/m2
+    - if user_signed_in?
+      = link_to(edit_product_path(@product) , class: 'btn btn-info', data: { toggle: :tooltip }, title: t('tooltips.edit')) do
+        %i.icon-edit
+      = link_to([@product], class: 'btn btn-danger', method: :delete, data: { confirm: t('tooltips.are_you_sure'), toggle: :tooltip }, title: t('tooltips.delete')) do
+        %i.icon-trash

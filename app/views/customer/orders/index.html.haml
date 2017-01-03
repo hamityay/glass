@@ -1,0 +1,17 @@
+%table.table
+  %thead
+    %tr
+      %th= sort_link(@search, :width, t('activerecord.attributes.order.width'))
+      %th= sort_link(@search, :height, t('activerecord.attributes.order.height'))
+      %th= sort_link(@search, :count, t('activerecord.attributes.order.count'))
+      %th= sort_link(@search, :product_ids, t('activerecord.attributes.order.product_ids'))
+      %th= sort_link(@search, :quantity, t('activerecord.attributes.order.quantity'))
+      %th= sort_link(@search, :amount, t('activerecord.attributes.order.amount'))
+      %th= sort_link(@search, :date, t('activerecord.attributes.order.date'))
+      %th= sort_link(@search, :deadline, t('activerecord.attributes.order.deadline'))
+      %th= sort_link(@search, :state, t('activerecord.attributes.order.state'))
+      %th= sort_link(@search, :info, t('activerecord.attributes.order.info'))
+      %th.actions
+        = t('view.actions')
+  %tbody.orders
+    = render @orders

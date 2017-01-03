@@ -5,6 +5,7 @@ tr:
     create: Oluşturma
     destroy: Silme
     delete: Silme
+    edit: Düzenle
   btn:
     back: Geri
     update: Güncelle
@@ -36,10 +37,17 @@ tr:
     edit_login_info: Giriş bilgilerini güncelle
     home_page: Anasayfa
     admin_portal: Yönetici Portalı
+    profile: Profil
+    orders: Siparişlerim
+    neworder: Sipariş Ver
+    newproduct: Ürün Ekle
+    supliers: Tedarikçiler
+    stocks: Stok Bilgisi
   tooltips:
     delete: Sil
     are_you_sure: Devam etmek istedğinize emin misiniz?
     choose: Seç
+    edit: Düzenle
   btn:
     add: Ekle
     update: Güncelle
