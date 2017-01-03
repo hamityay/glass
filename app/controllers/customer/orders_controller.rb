@@ -1,8 +1,9 @@
 class Customer::OrdersController < Customer::CustomerApplicationController
   include ActionView::Helpers::NumberHelper
   before_action :authenticate_customer!, only: [:index, :new, :create]
+  after_action :inc_total, only: [:create, :update]
+  before_action :dec_total, only: [:destroy]
   before_action :set_order, only: [:edit, :update, :destroy]
-  after_action :update_total, only: [:create, :update]
   add_breadcrumb I18n.t('dock.dashboard'), :customer_orders_path
 
   def index
@@ -71,7 +72,11 @@ class Customer::OrdersController < Customer::CustomerApplicationController
       params.require(:order).permit(:width, :height, :count, :state, :deadline, :info, :product_ids)
     end
 
-    def update_total
+    def inc_total
       @order.customer.total = @order.customer.total + @order.amount unless @order.customer.orders.count == 1
+    end
+
+    def dec_total
+      @order.customer.total = @order.customer.total - @order.amount.to_i
     end
 end
