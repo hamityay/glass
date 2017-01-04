@@ -59,6 +59,6 @@ class Hq::CustomersController < Hq::ApplicationController
   end
 
   def customer_params
-    params.require(:customer).permit(:email, :name, :surname, :address, :phone, :officer, :user_id)
+    params.require(:customer).permit(:email, :name, :surname, :address, :phone, :officer, :total, :user_id)
   end
 end

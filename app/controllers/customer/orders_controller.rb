@@ -2,8 +2,9 @@ class Customer::OrdersController < Customer::CustomerApplicationController
   include ActionView::Helpers::NumberHelper
   before_action :authenticate_customer!, only: [:index, :new, :create]
   after_action :inc_total, only: [:create, :update]
-  before_action :dec_total, only: [:destroy]
   before_action :set_order, only: [:edit, :update, :destroy]
+  before_action :dec_total, only: [:destroy]
+
   add_breadcrumb I18n.t('dock.dashboard'), :customer_orders_path
 
   def index
@@ -24,8 +25,8 @@ class Customer::OrdersController < Customer::CustomerApplicationController
       @order.date = Date.today
       @order.state = 'Siparişiniz ulaştı'
       @order.amount = ( @order.quantity * @order.products.first.price * 1.18 ).round(2)
-      if @order.total == nil
-        @order.total = @order.amount.round
+      if @order.customer.total == nil
+        @order.customer.total = @order.amount.round
       end
       @order.save
       flash[:success] = 'Sipariş başarılı bir şekilde kaydedilmiştir'
@@ -40,7 +41,13 @@ class Customer::OrdersController < Customer::CustomerApplicationController
   end
 
   def update
+    @order.customer.total = @order.customer.total - @order.amount
+    @order.customer.save
     if @order.update(order_params)
+      @order.quantity = ((@order.width * @order.height * @order.count ) / 1000000.0).round(2)
+      @order.date = Date.today
+      @order.amount = ( @order.quantity * @order.products.first.price * 1.18 ).round(2)
+      @order.save
       flash[:success] = 'Sipariş başarılı bir şekilde güncellendi'
       if customer_signed_in?
         redirect_to customer_orders_path
@@ -73,10 +80,12 @@ class Customer::OrdersController < Customer::CustomerApplicationController
     end
 
     def inc_total
-      @order.customer.total = @order.customer.total + @order.amount unless @order.customer.orders.count == 1
+      @order.customer.total = @order.customer.total + @order.amount if @order.customer.orders.count != 1
+      @order.customer.save
     end
 
     def dec_total
       @order.customer.total = @order.customer.total - @order.amount.to_i
+      @order.customer.save
     end
 end
